@@ -2,6 +2,26 @@
     <img src="https://github.com/user-attachments/assets/5fcf18e1-ed16-49d3-9004-5301ac8d4309" alt="OpenWrt" />
 </div>
 
+# OpenWrt on Amlogic s905x and s912 TV Box
+
+I am excited this wounderful project. I tried to install OpenWrt into a few of my old TV Boxs. But sadly s905x TV Box couldn't boot and s912 TV Box could boot only usb disk. On other hand, LibreELEC worked both s905x and s912 TV Boxs. I wondered what was defferent and I looked into both boot partitions. But there is no clue. I suspected thare is some special magic between beginning of firmware and boot partition. So I made a script for Openwrt firmware with LibreELEC's magic. 
+
+## Prerequisite
+
+- parted
+- jq
+- LibreELEC firmware (https://libreelec.tv/downloads/amlogic/)
+- Openwrt-amlogic firmware (I recommend to use k6.12 firmware.)
+
+## Environment
+
+- Devuan Linux Excalibur (Debian Trixie)
+
+## Usage
+
+`# ./rebuild_firmware.sh openwrt_official_asmlogic_<CPU Ver>_<Kernel Ver>_<Date>.img.gz`
+
+
 # OpenWrt
 
 View Chinese description | [查看中文说明](README.cn.md)
