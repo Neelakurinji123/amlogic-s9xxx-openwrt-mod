@@ -80,7 +80,7 @@ extract () {
 
 build () {
     echo
-    echo " * Building firmwares"
+    echo " * Building Openwrt firmware"
 
     loop=$(losetup -f)
     if [ $loop == '/dev/loop0' ]; then
