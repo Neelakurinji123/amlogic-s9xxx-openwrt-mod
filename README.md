@@ -4,7 +4,7 @@
 
 # OpenWrt on Amlogic s905x and s912 TV Box
 
-I am excited this wounderful project. I tried to install OpenWrt into a few of my old TV Boxs. But sadly s905x TV Box couldn't boot and s912 TV Box could boot only usb disk. On other hand, LibreELEC worked both s905x and s912 TV Boxs. I wondered what was defferent and I looked into both boot partitions. But there is no clue. I suspected thare is some special magic between beginning of firmware and boot partition. So I made a script for Openwrt firmware with LibreELEC's magic. 
+I am excited this wounderful project. I tried to install OpenWrt into a few of my old TV Boxs. But sadly s905x TV Box couldn't boot and s912 TV Box could boot only usb disk. On other hand, LibreELEC worked both s905x and s912 TV Boxs. I wondered what was defferent and I looked into both boot partitions. But there was no clue. I suspected thare is some special magic between beginning of firmware and boot partition. So I made a script for Openwrt firmware with LibreELEC's magic. 
 
 ## Prerequisite
 
