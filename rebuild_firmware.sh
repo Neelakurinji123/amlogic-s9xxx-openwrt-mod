@@ -1,19 +1,35 @@
 #!/bin/bash
 
+# Created by https://github.com/Neelakurinji123
+# Version: Feb 17 2026
+
 openwrt_gz_file=$1
 working_dir='.working_dir'
-libreelec_gz_file=$(ls LibreELEC-AMLGX.aarch64*.gz)
-openwrt_file="$(basename ${openwrt_gz_file%%.img.gz})_mod.img"
-libreelec_file=$(basename ${libreelec_gz_file%%.gz})
-comment=''
 
 echo """
 ################################################################################
 
-    Openwrt-Amlogic's firmware rebuilder for s905x and s912
+        Openwrt-Amlogic's firmware rebuilder for s905x and s912
 
 ################################################################################
 """
+
+if [ -z "$1" ]; then
+    echo -e "  [Usage] "
+    echo -e "  Build              : rebuild_firmware.sh openwrt_official_asmlogic_<CPU Ver>_<Kernel Ver>_<Date>.img.gz "
+    echo -e "  Remove working dir : rebuild_firmware.sh clean "
+    echo
+    exit 0
+elif [ "$1" == "clean" ]; then
+    rm -rf $working_dir
+    echo "  * Remove working dir: OK "
+    echo
+    exit 0
+fi
+
+libreelec_gz_file=$(ls LibreELEC-AMLGX.aarch64*.gz)
+openwrt_file="$(basename ${openwrt_gz_file%%.img.gz})_mod.img"
+libreelec_file=$(basename ${libreelec_gz_file%%.gz})
 
 check () {
     if [ $? -eq 0 ]; then
@@ -64,7 +80,7 @@ extract () {
 
 build () {
     echo
-    echo " * Building firmwares"
+    echo " * Building Openwrt firmware"
 
     loop=$(losetup -f)
     if [ $loop == '/dev/loop0' ]; then
@@ -92,8 +108,13 @@ build () {
 
 extract
 build
+
+if [ -e "$openwrt_file" ]; then
+    rm $openwrt_file
+fi
 mv $working_dir/$openwrt_file .
 
 echo
 echo " Operation has finished successfully. "
 echo " New filename is $openwrt_file. "
+echo
